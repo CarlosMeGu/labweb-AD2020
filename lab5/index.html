@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JQuery Intro</title>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <style>
+        .bold { font-weight: bold; }
+        .yellow-bg { background: yellow}
+
+    </style>
+</head>
+<body>
+<p><a href="http://jquery.com/" id="test" class="button-to-bold" target="_blank">jQuery Page</a></p>
+<p><a href="https://www.tutorialrepublic.com/faq.php#javascript-jquery" id="faq" class="button-to-bold" target="_blank">FAQs JQuery</a></p>
+<p><strong>Note:</strong> The value of the id attribute must be unique in an HTML.</p>
+<div id="texto">
+    <p id="innerText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labor</p>
+    <p id="extraText">Some other extra text</p>
+</div>
+<form action="#" method="post" id="users">
+    <label for="firstName">First Name:</label>
+    <input type="text" name="first-name" id="firstName">
+    <input type="button" value="Ocultar" id="hide">
+    <input type="button" value="Mostrar" id="show">
+    <input type="button" value="Leer Info" id="read">
+    <input type="button" value="Leer Datos" id="readForm">
+    <input type="button" value="Agregar" id="addP">
+    <input type="button" value="Eliminar" id="delP">
+    <input type="button" value="Agregar Botón" id="addBtn">
+    <div id="result"></div>
+    <div id="newButtons"></div>
+</form>
+
+<script>
+
+    $( document ).ready(function() {
+        $( ".new-button" ).click(function() {
+            $(this).remove();
+        });
+        $( ".button-to-bold" ).click(function() {
+            $(this).toggleClass("bold");
+        });
+
+        function firstChanges(){
+            $('#innerText').addClass("yellow-bg");
+            $('#test').addClass("bold");
+        }
+        $( "#hide" ).click(function() {
+            $('#texto').hide();
+            $('#extraText').hide();
+        });
+        $( "#show" ).click(function() {
+            $('#texto').show();
+            $('#innerText').show();
+        });
+        $( "#read" ).click(function() {
+            alert($('#texto').text());
+        });
+        $( "#readForm" ).click(function() {
+            alert($('#firstName').val());
+        });
+        $("#addP").click(function(){
+            $("#texto").append(" <p id='result'>Soy un nuevo párrafo</p>");
+        });
+        $("#addBtn").click(function(){
+            $("#newButtons").append(" <p>Nuevo Botón <input type=\"button\" value=\"Delete\" id='delMe' class='new-button'></p>");
+        });
+        $("#delP").click(function(){
+            if($("#result").length)
+                $("#result").remove();
+            else
+                alert('No hay elemento que eliminar')
+        });
+        $("#newButtons").on("click", "input#delMe", function(){
+            $(this).remove();
+        });
+        firstChanges()
+    });
+
+    $().docu
+</script>
+</body>
+</html>
